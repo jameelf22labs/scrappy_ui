@@ -56,3 +56,13 @@ export type EventsType = {
 export type CheckEventResponse = {
   events: EventsType;
 };
+
+export type GetAllEventResponse = {
+  pagination: {
+    totalItems: number;
+    currentPage: number;
+    pageSize: string;
+    totalPages: number;
+  };
+  events: EventsType[];
+};

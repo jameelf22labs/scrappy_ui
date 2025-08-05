@@ -1,6 +1,7 @@
 import axios from "axios";
+import qs from "qs";
 import handleApi from "./handle.api";
-import type { CheckEventResponse, EventsType } from "./types";
+import type { CheckEventResponse, GetAllEventResponse } from "./types";
 
 export default class EventApi {
   private readonly baseUrl: string;
@@ -15,9 +16,22 @@ export default class EventApi {
     );
   }
 
-  async httpGetAllEvents() {
-    return handleApi<{ events: EventsType[] }>(
-      axios.get(`${this.baseUrl}/all`)
+  async httpGetAllEvents(query?: {
+    page?: number;
+    limit?: number;
+    status?: string;
+  }) {
+    return handleApi<GetAllEventResponse>(
+      axios.get(`${this.baseUrl}/all`, {
+        params: query,
+        paramsSerializer: {
+          serialize: (params) =>
+            qs.stringify(params, {
+              skipNulls: true,
+              encode: true,
+            }),
+        },
+      })
     );
   }
 }
