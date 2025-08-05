@@ -11,7 +11,7 @@ export interface ErrorResponse {
   details?: any;
 }
 
-export type Jobs = {
+export type JobsType = {
   id: string;
   jobTitle: string;
   remote: string;
@@ -25,7 +25,7 @@ export type Jobs = {
 
 export type GetAllJobsResponse = {
   jobs: {
-    jobs: Jobs[];
+    jobs: JobsType[];
     totalCount: number;
     totalPages: number;
     currentPage: number;
@@ -37,10 +37,10 @@ export type StartScrappingResponse = {
 };
 
 export type JobQueryParams = {
-  title: string;
-  remote: string;
-  type: string;
-  location: string;
+  title?: string;
+  remote?: string;
+  type?: string;
+  location?: string;
   page: number;
   limit: number;
 };
