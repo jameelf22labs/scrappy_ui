@@ -45,12 +45,14 @@ export type JobQueryParams = {
   limit: number;
 };
 
+export type EventsType = {
+  id: string;
+  status: "Failed" | "Success" | "Pause" | "Running";
+  isError: boolean;
+  errorMessage: string;
+  data: string;
+};
+
 export type CheckEventResponse = {
-  event: {
-    id: string;
-    status: "Failed" | "Success" | "Pause" | "Running";
-    isError: boolean;
-    errorMessage: string;
-    data: string;
-  };
+  events: EventsType;
 };
