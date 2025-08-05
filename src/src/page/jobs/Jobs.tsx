@@ -63,6 +63,10 @@ const Jobs = (): JSX.Element => {
     setPage(1);
   };
 
+  const triggerCrawler = () => {
+    httpJobs.httpStartScrapping();
+  };
+
   return (
     <div className="flex flex-col items-center px-4 py-10 pt-20 min-h-screen h-full bg-[#0d1117] text-white">
       <div className="w-full max-w-7xl flex justify-between items-center mb-8">
@@ -70,7 +74,7 @@ const Jobs = (): JSX.Element => {
 
         <div className="flex gap-4">
           <button
-            onClick={() => console.log("Trigger crawling")}
+            onClick={triggerCrawler}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition duration-200"
           >
             Crawling
