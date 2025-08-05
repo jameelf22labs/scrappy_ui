@@ -64,7 +64,7 @@ const Jobs = (): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-col items-center pt-[100px] justify-center px-4 py-10 min-h-screen bg-[#0d1117] text-white">
+    <div className="flex flex-col items-center px-4 py-10 pt-20 min-h-screen h-full bg-[#0d1117] text-white">
       <div className="w-full max-w-7xl flex justify-between items-center mb-8">
         <h1 className="font-bold text-3xl text-white">Jobs</h1>
 
