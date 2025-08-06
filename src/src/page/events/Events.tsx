@@ -31,13 +31,21 @@ const Events = (): JSX.Element => {
     setLoading(false);
   };
 
+
   useEffect(() => {
     fetchEvents(currentPage, pageSize, statusFilter);
-  }, [currentPage, pageSize, statusFilter]);
+  }, []);
 
   const onPageChange = (page: number, size: number) => {
     setCurrentPage(page);
     setPageSize(size);
+    fetchEvents(page, size);
+  };
+
+  const handleStatusSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const status = e.target.value === "" ? "" : e.target.value;
+    setStatusFilter(status);
+    fetchEvents(currentPage, pageSize, status);
   };
 
   return (
@@ -48,11 +56,7 @@ const Events = (): JSX.Element => {
         <div className="mb-6 flex justify-end">
           <select
             value={statusFilter || ""}
-            onChange={(e) =>
-              setStatusFilter(
-                e.target.value === "" ? "" : e.target.value
-              )
-            }
+            onChange={handleStatusSelect}
             className="px-4 py-2 rounded-md bg-[#1e1e1e] text-white border border-gray-700"
           >
             <option value="">All Status</option>

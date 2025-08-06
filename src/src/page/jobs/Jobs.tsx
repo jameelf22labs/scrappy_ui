@@ -9,6 +9,7 @@ import type {
   JobsType,
 } from "../../service/types";
 import "./style.css";
+import { toast } from "sonner";
 
 const Jobs = (): JSX.Element => {
   const httpJobs = ApiFactory.httpJobs();
@@ -49,6 +50,7 @@ const Jobs = (): JSX.Element => {
     fetchJobs();
   }, []);
 
+
   const handleReload = () => fetchJobs(page, filters);
 
   const handlePageChange = (newPage: number) => {
@@ -64,7 +66,16 @@ const Jobs = (): JSX.Element => {
   };
 
   const triggerCrawler = () => {
-    httpJobs.httpStartScrapping();
+    httpJobs.httpStartScrapping().then((event) => {
+      toast(
+        <span className="text-[16px]">
+          Scrapping Started
+          <span className="font-semibold text-green-500 ml-2">{event.eventId}</span>.
+          Check status from
+          <a href="/event" className="underline ml-2 text-blue-500">events</a>.
+        </span>
+      );
+    });
   };
 
   return (

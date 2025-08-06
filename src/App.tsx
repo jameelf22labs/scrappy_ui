@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Events, Jobs } from "./src/page";
 import Navbar from "./src/layouts/navbar/Navbar";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <div>
+      <Toaster />
       <BrowserRouter>
         <Navbar />
 
